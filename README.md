@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name: VIDHYA SHREE K </h3>
+<h3>Register Number: 212225230396 </h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -67,6 +67,83 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 <li>Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes.</li>
 
 </ol>
+<h3>CODE:</h3>
+
+from collections import deque
+
+from collections import defaultdict
+
+def bfs(graph, start, visited, path):
+
+    queue = deque()
+    
+    visited[start] = True
+    
+    queue.append(start)
+    
+    path.append(start)
+    
+    while queue:
+        
+        node = queue.popleft()
+        
+        for neighbour in graph[node]:
+            
+            if not visited[neighbour]:
+                
+                visited[neighbour] = True
+                
+                queue.append(neighbour)
+                
+                path.append(neighbour)
+
+    return path
+
+
+graph = defaultdict(list)
+
+
+v, e = map(int, input("Enter the number of nodes and edges: ").split())
+
+print("\nEnter the edges (Adjacent Nodes):")
+
+for i in range(e):
+    
+    u, w = input(f"Edge {i+1} (u v): ").split()
+    
+    graph[u].append(w)
+    
+    graph[w].append(u)      
+
+print("\nAdjacency List:")
+
+for node in graph:
+    
+    print(node, "->", graph[node])
+
+start = input("\nEnter the start node for BFS: ")
+
+if start not in graph:
+    
+    print("Invalid start node!")
+
+else:
+    
+    visited = defaultdict(bool)
+    
+    path = []
+
+traversedpath = bfs(graph, start, visited, path)
+
+print("\nBFS Traversal:", " -> ".join(traversedpath))
+
+
+<h3>OUTPUT</h3>
+
+<img width="324" height="377" alt="Screenshot 2026-07-30 133043" src="https://github.com/user-attachments/assets/86845f63-0191-488f-a72a-99c7eb10af88" />
+
+
+<img width="384" height="179" alt="Screenshot 2026-07-30 133023" src="https://github.com/user-attachments/assets/8dce92e0-dcb2-497a-b83f-4597a5044a22" />
 
 <hr>
 <h3>Sample Input</h3>
